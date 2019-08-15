@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script src = "/javascript/accelerometerLogger.js"></script>
   </head>
   <body>
     <h1>Start sending accelerometer data </h1>
-    <button type = "button"> START SENSING </button>
+    <button type = "button" onclick="startSensing()"> START SENSING </button>
+    <button type = "button" onclick="stopSensing()"> STOP SENSING </button>
   </body>
 </html>
