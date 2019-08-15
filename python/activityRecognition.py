@@ -8,6 +8,13 @@ from joblib import load
 import warnings
 warnings.filterwarnings('ignore')
 
+# Creating files if do not exitst
+if not os.path.exists('data/classification.txt'):
+    with open('data/classification.txt','w'): pass
+
+# if not os.path.exists('data/rawdata.csv'):
+#     with open('data/rawdata.csv','w'): pass
+
 raw_csv_file = 'data/rawdata.csv'
 COLUMNS = ["timestamp","x-axis","y-axis","z-axis"]
 
