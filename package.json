@@ -1,23 +1,23 @@
 {
-  "name": "activityrecognition",
-  "version": "1.0.0",
-  "description": "Real time activity human recognition using mobile phone accelerometer and machine learning",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/madarii/ActivityRecognition.git"
-  },
-  "author": "Rishabh Shirke",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/madarii/ActivityRecognition/issues"
-  },
-  "homepage": "https://github.com/madarii/ActivityRecognition#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^2.2.0"
-  }
+    "name": "activityrecognition",
+    "version": "1.0.0",
+    "description": "Real time activity human recognition using mobile phone accelerometer and machine learning",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/madarii/ActivityRecognition.git"
+    },
+    "author": "Rishabh Shirke",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/madarii/ActivityRecognition/issues"
+    },
+    "homepage": "https://github.com/madarii/ActivityRecognition#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "socket.io": "^2.2.0",
+    }
 }

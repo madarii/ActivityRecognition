@@ -38,9 +38,11 @@ function startInterval(){
   },1000/50);
 }
 
+init();
+
 function startSensing(){
+  socket.emit("sensing");
   start = true;
-  init();
   if(firstRun){
     startInterval();
     firstRun = false;
@@ -48,7 +50,8 @@ function startSensing(){
 }
 
 function stopSensing(){
+  instance = ""
+  socket.emit("not sensing");
   start = false;
   count = 0;
-  window.removeEventListener('devicemotion', handleAccelerationEvent);
 }

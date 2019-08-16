@@ -8,14 +8,13 @@ from joblib import load
 import warnings
 warnings.filterwarnings('ignore')
 
+if not os.path.isdir("python/data"):
+    os.mkdir("python/data")
 # Creating files if do not exitst
-if not os.path.exists('data/classification.txt'):
-    with open('data/classification.txt','w'): pass
+if not os.path.exists('python/data/rawdata.csv'):
+    with open('python/data/rawdata.csv','w'): pass
 
-# if not os.path.exists('data/rawdata.csv'):
-#     with open('data/rawdata.csv','w'): pass
-
-raw_csv_file = 'data/rawdata.csv'
+raw_csv_file = 'python/data/rawdata.csv'
 COLUMNS = ["timestamp","x-axis","y-axis","z-axis"]
 
 LABELS = {
@@ -26,7 +25,7 @@ LABELS = {
     4 : "walking up stairs",
     5 : "walking down staris"
 }
-model = load('models/nn_100_relu.joblib')
+model = load('python/models/nn_100_relu.joblib')
 
 def calc_magnitude(activity_df):
     x2 = activity_df["x-axis"].pow(2)
@@ -58,22 +57,19 @@ def extract_features(activity_df):
 last_modified = os.stat(raw_csv_file).st_mtime
 
 while True:
-    file_stats = os.stat(raw_csv_file)
-    if file_stats.st_mtime != last_modified:
-        activity_df = pd.read_csv(raw_csv_file,names=COLUMNS)
-        activity_df = activity_df.apply(pd.to_numeric)
-        activity_df["magnitude"] = calc_magnitude(activity_df)
-        feature_vector = extract_features(activity_df)
-        predicted_label = model.predict([feature_vector])
-        print(predicted_label)
-        predicted_activity = LABELS[predicted_label[0]]
-        print(predicted_label)
-
-        with open('data/classification.txt', 'w') as f:
-            f.truncate()
-            f.write(predicted_activity)
-
-        last_modified = file_stats.st_mtime
-    else:
-        print("file didn't change")
-    time.sleep(0.5)
+    try:
+        file_stats = os.stat(raw_csv_file)
+        if file_stats.st_mtime != last_modified and os.path.getsize(raw_csv_file) > 0:
+            activity_df = pd.read_csv(raw_csv_file,names=COLUMNS)
+            activity_df = activity_df.apply(pd.to_numeric)
+            activity_df["magnitude"] = calc_magnitude(activity_df)
+            feature_vector = extract_features(activity_df)
+            predicted_label = model.predict([feature_vector])
+            # print(predicted_label)
+            predicted_activity = LABELS[predicted_label[0]]
+            print(predicted_activity)
+            last_modified = file_stats.st_mtime
+        else:
+            #print("file didn't change")
+            time.sleep(0.5)
+    except KeyboardInterrupt: pass
