@@ -12,6 +12,16 @@ const io = socket(server);
 
 app.use(express.static('public'));
 
+//create folders and files
+try{
+  fs.mkdirSync(__dirname + '/python/data');
+}
+catch(e){}
+
+fd = fs.openSync(__dirname + '/python/data/rawdata.csv','w');
+fs.closeSync(fd);
+
+
 function run_classifier(){
   proc = spawn('python',["-u",__dirname + '/python/activityRecognition.py']);
 
@@ -40,11 +50,13 @@ io.on('connection',(socket)=>{
   })
 
   socket.on('data',(data)=>{
-    var instance = data.data;
+    let instance = data.data;
+    // fs.writeSync(fd,instance);
     fs.writeFileSync(__dirname + '/python/data/rawdata.csv',instance);
   })
 
   socket.on('disconnect',()=>{
+    // fs.closeSync(fd);
     console.log('client disconnected')
     fs.truncate(__dirname + '/python/data/rawdata.csv',0,()=>{
       console.log('raw data file truncated');
