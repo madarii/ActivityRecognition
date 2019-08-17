@@ -8,11 +8,11 @@ from joblib import load
 import warnings
 warnings.filterwarnings('ignore')
 
-if not os.path.isdir("python/data"):
-    os.mkdir("python/data")
-# Creating files if do not exitst
-if not os.path.exists('python/data/rawdata.csv'):
-    with open('python/data/rawdata.csv','w'): pass
+# if not os.path.isdir("python/data"):
+#     os.mkdir("python/data")
+# # Creating files if do not exitst
+# if not os.path.exists('python/data/rawdata.csv'):
+#     with open('python/data/rawdata.csv','w'): pass
 
 raw_csv_file = 'python/data/rawdata.csv'
 COLUMNS = ["timestamp","x-axis","y-axis","z-axis"]
