@@ -41,6 +41,9 @@ function startInterval(){
 init();
 
 function startSensing(){
+  document.getElementById("send").disabled = true;
+  document.getElementById("stop").disabled = false;
+
   socket.emit("sensing");
   start = true;
   if(firstRun){
@@ -50,6 +53,8 @@ function startSensing(){
 }
 
 function stopSensing(){
+  document.getElementById("send").disabled = false;
+  document.getElementById("stop").disabled = true;
   instance = ""
   socket.emit("not sensing");
   start = false;
