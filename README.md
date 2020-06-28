@@ -1,8 +1,7 @@
 # ActivityRecognition
 Real time human activity recognition using mobile phone's accelerometer
 
-[![](https://video-to-markdown.netlify.com/.netlify/functions/image?url=https%3A%2F%2Fyoutu.be%2FTHZTw4RhvBQ)](https://youtu.be/THZTw4RhvBQ "")
-
+[![](https://res.cloudinary.com/marcomontalbano/image/upload/v1593355518/video_to_markdown/images/youtube--THZTw4RhvBQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/THZTw4RhvBQ "")
 ## Android app for data collection
 * Records accelerometer data and saves it in a csv file.
 * Has timer to set the duration of recording
